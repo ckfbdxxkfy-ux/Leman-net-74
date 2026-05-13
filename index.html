@@ -126,7 +126,7 @@ form {
     flex-direction:column;
 }
 
-input, textarea {
+input, textarea, select {
     margin:10px 0;
     padding:15px;
     border:none;
@@ -175,573 +175,234 @@ footer {
 </style>
 </head>
 
+<script>
+
+let serviceChosen = false;
+let dateChosen = false;
+let timeChosen = false;
+
+function selectService(value) {
+    document.getElementById("serviceSelected").value = value;
+    serviceChosen = true;
+    updateButton();
+}
+
+document.getElementById("dateSelected")?.addEventListener("change", function() {
+    dateChosen = this.value !== "";
+    updateButton();
+});
+
+document.getElementById("timeSelected")?.addEventListener("change", function() {
+    timeChosen = this.value !== "";
+    updateButton();
+});
+
+function updateButton() {
+    const btn = document.getElementById("submitBtn");
+
+    if (serviceChosen && dateChosen && timeChosen) {
+        btn.disabled = false;
+        btn.style.opacity = "1";
+        btn.style.cursor = "pointer";
+    } else {
+        btn.disabled = true;
+        btn.style.opacity = "0.5";
+        btn.style.cursor = "not-allowed";
+    }
+}
+
+</script>
+
 <body>
 
 <header>
     <h1>Leman Net </h1>
-    <p>Entreprise de nettoyage professionnel & particulier</p>
+    <p>Entreprise de nettoyage professionnel & particulier</p> <br> La propreté est notre engagement.
 </header>
 
-<section class="hero">
-    <div class="hero-content">
-        <h2>Nettoyage professionnel en Haute-Savoie</h2>
-        <p>Professionnel • Débarras • Vitrerie • Conciergerie</p>
-    </div>
-</section>
+<section id="services" class="section fade">
 
-        <!-- Images inspirées du flyer -->
+    <h2>Nos Services</h2>
 
+    <div class="services">
+
+        <!-- NETTOYAGE PROFESSIONNEL -->
         <div class="card">
-            <h3>Nettoyage</h3>
-            <p>Nettoyage professionnel et particulier</p>
-            <h2>Nettoyage Professionnel</h2>
 
-    <p>
-      Sélectionnez le nombre d’heures adapté à votre entreprise
-      ou espace professionnel.
-    </p>
+            <h3> Nettoyage professionnel</h3>
 
-    <div class="hours-grid">
+            <select onchange="selectService(this.value)">
+                <option value="">Choisir une formule</option>
+                <option value="Nettoyage professionnel - 2h">2 heures (Petit bureau)</option>
+                <option value="Nettoyage professionnel - 3h">3 heures (Petite équipe)</option>
+                <option value="Nettoyage professionnel - 4h">4 heures (Bureau standard)</option>
+                <option value="Nettoyage professionnel - 6h">6 heures (Grand espace)</option>
+                <option value="Nettoyage professionnel - 8h">8 heures (Journée complète)</option>
+            </select>
 
-      <!-- CARD -->
-      <div class="hour-card" onclick="window.location.href='#contact'">
-        <div class="icon"></div>
-        <h3>2 heures</h3>
-        <p>
-          Petit studio / Bureau privé<br>
-          (jusqu'à 25 m²)
-        </p>
-      </div>
+        </div>
 
-      <!-- CARD -->
-      <div class="hour-card" onclick="window.location.href='#contact'">
-        <div class="icon"></div>
-        <h3>3 heures</h3>
-        <p>
-          Bureau pour petite équipe<br>
-          (environ 25 - 50 m²)
-        </p>
-      </div>
+        <!-- NETTOYAGE PARTICULIER -->
+        <div class="card">
 
-      <!-- CARD -->
-      <div class="hour-card" onclick="window.location.href='#contact'">
-        <div class="icon"></div>
-        <h3>4 heures</h3>
-        <p>
-          Espace de bureau standard<br>
-          (environ 50 - 75 m²)
-        </p>
-      </div>
+            <h3> Nettoyage particulier</h3>
 
-      <!-- CARD -->
-      <div class="hour-card" onclick="window.location.href='#contact'">
-        <div class="icon"></div>
-        <h3>6 heures</h3>
-        <p>
-          Grand espace d’entreprise<br>
-          (environ 75 - 125 m²)
-        </p>
-      </div>
+            <select onchange="selectService(this.value)">
+                <option value="">Choisir une formule</option>
+                <option value="Nettoyage particulier - 1,5 pièces">1,5 pièces</option>
+                <option value="Nettoyage particulier - 2 pièces">2 pièces</option>
+                <option value="Nettoyage particulier - 2,5 pièces">2,5 pièces</option>
+                <option value="Nettoyage particulier - 3 pièces">3 pièces</option>
+                <option value="Nettoyage particulier - 3,5 pièces">3,5 pièces</option>
+                <option value="Nettoyage particulier - 4 pièces">4 pièces</option>
+                <option value="Nettoyage particulier - 4,5 pièces">4,5 pièces</option>
+                <option value="Nettoyage particulier - 5 pièces">5 pièces</option>
+            </select>
 
-      <!-- CARD -->
-      <div class="hour-card" onclick="window.location.href='#contact'">
-        <div class="icon"></div>
-        <h3>8 heures</h3>
-        <p>
-          Journée complète<br>
-          Nettoyage en profondeur ou grand bureau
-        </p>
-      </div>
+        </div>
+
+        <!-- VITRERIE -->
+        <div class="card">
+
+            <h3> Vitrerie</h3>
+
+            <select onchange="selectService(this.value)">
+                <option value="">Choisir une formule</option>
+                <option value="Vitrerie - 2h">2 heures (Petit appartement)</option>
+                <option value="Vitrerie - 3h">3 heures (Domicile moyen)</option>
+                <option value="Vitrerie - 4h">4 heures (Grande maison)</option>
+                <option value="Vitrerie - 5h">5 heures (Villa)</option>
+            </select>
+
+        </div>
+
+        <!-- DÉBARRAS -->
+        <div class="card">
+
+            <h3>🚛 Débarras</h3>
+
+            <select onchange="selectService(this.value)">
+                <option value="">Choisir une formule</option>
+                <option value="Débarras - 4h">4 heures (Demi-journée)</option>
+                <option value="Débarras - 8h">8 heures (Journée complète)</option>
+            </select>
+
+        </div>
+
+        <!-- CONCIERGERIE -->
+        <div class="card">
+
+            <h3>🛎️ Conciergerie</h3>
+
+            <select onchange="selectService(this.value)">
+                <option value="">Choisir une prestation</option>
+                <option value="Conciergerie - Airbnb">Entretien Airbnb</option>
+                <option value="Conciergerie - Gestion clés">Gestion des clés</option>
+                <option value="Conciergerie - Ménage régulier">Ménage régulier</option>
+                <option value="Conciergerie - Accueil">Accueil voyageurs</option>
+            </select>
+
+        </div>
 
     </div>
 
-    <!-- BOUTON -->
-    <a href="#contact" class="btn-pro">
-      PRENDRE RENDEZ-VOUS / FIXER UN RENDEZ-VOUS
-    </a>
-
-  </div>
-
 </section>
 
-<!-- ===================================== -->
-<!-- STYLE CSS -->
-<!-- ===================================== -->
+<!-- STYLE -->
 
 <style>
 
-.pro-section{
-    padding:100px 20px;
-    background:#f5f7fb;
-    text-align:center;
+#successMessage {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: green;
+    color: white;
+    padding: 15px 25px;
+    border-radius: 10px;
+    display: none;
+    z-index: 9999;
 }
 
-.pro-section h2{
-    font-size:48px;
-    color:#0b1f3a;
-    margin-bottom:15px;
-    font-weight:800;
+#contact button:disabled {
+    background:#999 !important;
+    transform:none !important;
+    box-shadow:none !important;
+    cursor:not-allowed;
+    opacity:0.6;
 }
 
-.pro-section p{
-    font-size:18px;
-    color:#666;
-    line-height:1.6;
-}
-
-.hours-grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-    gap:30px;
-    margin-top:60px;
-    max-width:1200px;
-    margin-left:auto;
-    margin-right:auto;
-}
-
-.hour-card{
-    background:white;
-    padding:35px 25px;
-    border-radius:20px;
-    box-shadow:0 10px 30px rgba(0,0,0,0.08);
-    transition:0.4s ease;
-    border:1px solid rgba(0,0,0,0.05);
-}
-
-.hour-card:hover{
-    transform:translateY(-10px);
-    background:#0b1f3a;
-}
-
-.hour-card:hover h3,
-.hour-card:hover p,
-.hour-card:hover .icon{
-    color:white;
-}
-
-.icon{
-    font-size:45px;
-    margin-bottom:20px;
-}
-
-.hour-card h3{
-    font-size:28px;
-    color:#0b1f3a;
-    margin-bottom:15px;
-}
-
-.hour-card p{
+.service-select{
+    width:100%;
+    margin-top:20px;
+    padding:14px;
+    border:none;
+    border-radius:10px;
     font-size:16px;
-    color:#555;
-}
-
-.btn-pro{
-    display:inline-block;
-    margin-top:60px;
-    background:#d62828;
-    color:white;
-    text-decoration:none;
-    padding:18px 45px;
-    border-radius:60px;
-    font-size:18px;
-    font-weight:bold;
-    transition:0.3s ease;
-    box-shadow:0 10px 25px rgba(214,40,40,0.3);
-}
-
-.btn-pro:hover{
-    background:#b71c1c;
-    transform:scale(1.05);
-}
-
-/* RESPONSIVE */
-
-@media(max-width:768px){
-
-.pro-section h2{
-    font-size:36px;
-}
-
-.hour-card h3{
-    font-size:24px;
-}
-
-.btn-pro{
-    width:100%;
-    max-width:350px;
-}
-
-}
-
-</style>
-            
-<div class="card">
-            <img src="https://images.unsplash.com/photo-1527515637462-cff94eecc1ac" alt="Nettoyage professionnel">
-            <h3>Nettoyage</h3>
-    <p>
-        
-        <h2>Nettoyage Particulier</h2>
-
-    <p>
-      Choisissez la taille de votre propriété et prenez rendez-vous rapidement
-      avec Léman Net.
-    </p>
-
-    <div class="property-list">
-
-      <div class="property-card" onclick="window.location.href='#contact'">
-        <span></span>
-        <h3>1,5 pièces</h3>
-      </div>
-
-      <div class="property-card" onclick="window.location.href='#contact'">
-        <span></span>
-        <h3>2 pièces</h3>
-      </div>
-
-      <div class="property-card" onclick="window.location.href='#contact'">
-        <span></span>
-        <h3>2,5 pièces</h3>
-      </div>
-
-      <div class="property-card" onclick="window.location.href='#contact'">
-        <span></span>
-        <h3>3 pièces</h3>
-      </div>
-
-      <div class="property-card" onclick="window.location.href='#contact'">
-        <span></span>
-        <h3>3,5 pièces</h3>
-      </div>
-
-      <div class="property-card" onclick="window.location.href='#contact'">
-        <span></span>
-        <h3>4 pièces</h3>
-      </div>
-
-      <div class="property-card" onclick="window.location.href='#contact'">
-        <span></span>
-        <h3>4,5 pièces</h3>
-      </div>
-
-      <div class="property-card" onclick="window.location.href='#contact'">
-        <span></span>
-        <h3>5 pièces</h3>
-      </div>
-
-    </div>
-
-    <!-- BOUTON -->
-    <a href="#contact" class="btn-rdv">
-      PRENDRE RENDEZ-VOUS
-    </a>
-
-  </div>
-</section>
-
-<!-- ========================= -->
-<!-- STYLE CSS -->
-<!-- ========================= -->
-
-<style>
-
-.services-section{
-    padding:100px 20px;
-    background:linear-gradient(to bottom,#f7f9fc,#ffffff);
-    text-align:center;
-}
-
-.services-section h2{
-    font-size:48px;
-    color:#0b1f3a;
-    margin-bottom:15px;
-    font-weight:800;
-}
-
-.services-section p{
-    color:#666;
-    font-size:18px;
-    max-width:700px;
-    margin:auto;
-    margin-bottom:60px;
-    line-height:1.6;
-}
-
-.property-list{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-    gap:25px;
-    max-width:1100px;
-    margin:auto;
-}
-
-.property-card{
-    background:#fff;
-    padding:35px 20px;
-    border-radius:20px;
-    box-shadow:0 10px 30px rgba(0,0,0,0.08);
-    transition:0.4s ease;
-    cursor:pointer;
-    border:1px solid rgba(0,0,0,0.05);
-}
-
-.property-card span{
-    font-size:40px;
-    display:block;
-    margin-bottom:15px;
-}
-
-.property-card h3{
-    font-size:24px;
-    color:#0b1f3a;
-    margin:0;
-    font-weight:700;
-}
-
-.property-card:hover{
-    transform:translateY(-10px);
-    background:#0b1f3a;
-}
-
-.property-card:hover h3,
-.property-card:hover span{
-    color:#fff;
-}
-
-.btn-rdv{
-    display:inline-block;
-    margin-top:60px;
-    padding:18px 45px;
-    background:#d62828;
-    color:white;
-    font-size:18px;
-    font-weight:bold;
-    text-decoration:none;
-    border-radius:60px;
-    transition:0.3s ease;
-    box-shadow:0 10px 25px rgba(214,40,40,0.3);
-}
-
-.btn-rdv:hover{
-    background:#b71c1c;
-    transform:scale(1.05);
-}
-
-/* RESPONSIVE */
-
-@media(max-width:768px){
-
-.services-section h2{
-    font-size:36px;
-}
-
-.property-card h3{
-    font-size:20px;
-}
-
-.btn-rdv{
-    width:100%;
-    max-width:350px;
-}
-
-}
-
-</style>
-
-        <div class="card">
-            <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd" alt="Débarras fin de chantier">
-            <h3>Débarras</h3>
-            <p>Encombrants & fin de chantier</p>
-        </div>
-
-        <div class="card">
-            <img src="https://images.unsplash.com/photo-1603712725038-e9334ae8f39f" alt="Nettoyage façade immeuble">
-            <h3>Vitrerie</h3>
-            <div class="container">
-
-    <h2>Service Vitrerie</h2>
-
-    <p>
-      Choisissez la formule adaptée à votre logement
-      pour un nettoyage de vitres professionnel et impeccable.
-    </p>
-
-    <div class="glass-grid">
-
-      <!-- CARD -->
-      <div class="glass-card" onclick="window.location.href='#contact'">
-    <div class="glass-icon"></div>
-    <h3>2 heures</h3>
-    <p>Petit appartement</p>
-</div>
-
-      <!-- CARD -->
-      <div class="glass-card" onclick="window.location.href='#contact'">
-        <div class="glass-icon"></div>
-        <h3>3 heures</h3>
-        <p>Domicile moyen</p>
-      </div>
-
-      <!-- CARD -->
-      <div class="glass-card" onclick="window.location.href='#contact'">
-        <div class="glass-icon"></div>
-        <h3>4 heures</h3>
-        <p>Grande maison</p>
-      </div>
-
-      <!-- CARD -->
-      <div class="glass-card" onclick="window.location.href='#contact'">
-        <div class="glass-icon"></div>
-        <h3>5 heures</h3>
-        <p>Villa</p>
-      </div>
-
-    </div>
-
-    <!-- BOUTON -->
-    <a href="#contact" class="btn-vitrerie">
-      PRENDRE RENDEZ-VOUS / FIXER UN RENDEZ-VOUS
-    </a>
-
-  </div>
-
-</section>
-
-<!-- ===================================== -->
-<!-- STYLE CSS -->
-<!-- ===================================== -->
-
-<style>
-
-.vitrerie-section{
-    padding:100px 20px;
-    background:linear-gradient(to bottom,#ffffff,#f5f7fb);
-    text-align:center;
-}
-
-.vitrerie-section h2{
-    font-size:48px;
-    color:#0b1f3a;
-    margin-bottom:15px;
-    font-weight:800;
-}
-
-.vitrerie-section p{
-    color:#666;
-    font-size:18px;
-    max-width:700px;
-    margin:auto;
-    line-height:1.6;
-}
-
-.glass-grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-    gap:30px;
-    max-width:1100px;
-    margin:60px auto 0;
-}
-
-.glass-card{
     background:white;
-    padding:40px 25px;
-    border-radius:20px;
-    box-shadow:0 10px 30px rgba(0,0,0,0.08);
-    transition:0.4s ease;
-    border:1px solid rgba(0,0,0,0.05);
+    color:#0b1f3a;
     cursor:pointer;
 }
 
-.glass-card:hover{
-    transform:translateY(-10px);
-    background:#0b1f3a;
-}
-
-.glass-card:hover h3,
-.glass-card:hover p,
-.glass-card:hover .glass-icon{
-    color:white;
-}
-
-.glass-icon{
-    font-size:50px;
-    margin-bottom:20px;
-}
-
-.glass-card h3{
-    font-size:28px;
-    color:#0b1f3a;
-    margin-bottom:10px;
-}
-
-.glass-card p{
-    font-size:17px;
-    color:#555;
-}
-
-.btn-vitrerie{
-    display:inline-block;
-    margin-top:60px;
-    padding:18px 45px;
-    background:#d62828;
-    color:white;
-    text-decoration:none;
-    border-radius:60px;
-    font-size:18px;
-    font-weight:bold;
-    transition:0.3s ease;
-    box-shadow:0 10px 25px rgba(214,40,40,0.3);
-}
-
-.btn-vitrerie:hover{
-    background:#b71c1c;
-    transform:scale(1.05);
-}
-
-/* RESPONSIVE */
-
-@media(max-width:768px){
-
-.vitrerie-section h2{
-    font-size:36px;
-}
-
-.glass-card h3{
-    font-size:24px;
-}
-
-.btn-vitrerie{
-    width:100%;
-    max-width:350px;
-}
-
+.service-select:focus{
+    outline:none;
 }
 
 </style>
-            <p>Nettoyage de vitres et façades</p>
-        </div>
-
-        <div class="card">
-            <img src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85" alt="Conciergerie">
-            <h3>Conciergerie</h3>
-            <p>Services de conciergerie et entretien</p>
-        </div>
-
-    </div>
-</section>
 
 <section id="contact" class="section contact">
     <h2>Contact</h2>
 
     <form action="https://formspree.io/f/xkoypone" method="POST">
-        <input type="text" name="nom" placeholder="Votre nom" required>
-        <input type="email" name="email" placeholder="Votre email" required>
-        <textarea name="message" rows="5" placeholder="Votre besoin..." required></textarea>
+        <input type="hidden" name="service" id="serviceSelected">
 
-        <input type="hidden" name="_captcha" value="false">
+    <input type="text"
+    name="nom"
+    placeholder="Votre nom"
+    required>
 
-        <button type="submit">Envoyer</button>
-    </form>
+    <input type="email"
+    name="email"
+    placeholder="Votre email"
+    required>
+
+    <!-- SERVICE (rempli automatiquement) -->
+    <input type="hidden" name="service" id="serviceSelected">
+
+    <!-- DATE -->
+    <input type="date" name="date" id="dateSelected" required>
+
+    <!-- HEURE -->
+    <input type="time" name="heure" id="timeSelected" required>
+
+    <textarea name="message" rows="5" placeholder="Votre message..." required></textarea>
+
+
+     <input type="hidden" name="_captcha" value="false">
+
+            <button type="submit" class="btn" id="submitBtn">Envoyer</button>
+
+            <p class="success" id="successMessage">✔ Message envoyé !</p>
+
+</form>
+
+<script>
+// SCROLL ANIMATION
+const faders = document.querySelectorAll('.fade');
+
+window.addEventListener('scroll', () => {
+    faders.forEach(el => {
+        const rect = el.getBoundingClientRect();
+        if(rect.top < window.innerHeight - 100){
+            el.classList.add('visible');
+        }
+    });
+});
+
+</script>
+
+</form>
 
     <div class="info">
         📞 06 03 15 26 13<br>
@@ -754,6 +415,3 @@ footer {
 <footer>
     © 2026 Leman Net 74 - Tous droits réservés
 </footer>
-
-</body>
-</html>
