@@ -177,68 +177,53 @@ footer {
 
 <script>
 
-document.addEventListener("DOMContentLoaded", () => {
+function selectService(value){
 
-    let serviceChosen = false;
-    let dateChosen = false;
-    let timeChosen = false;
+    document.getElementById("serviceSelected").value = value;
 
-    const btn = document.getElementById("submitBtn");
-    const serviceInput = document.getElementById("serviceSelected");
-    const dateInput = document.getElementById("dateSelected");
-    const timeInput = document.getElementById("timeSelected");
+    checkForm();
 
-    // bouton désactivé au départ
-    btn.disabled = true;
+}
 
-    // fonction globale
-    window.selectService = function(value){
+function checkForm(){
 
-        serviceInput.value = value;
+    const service =
+    document.getElementById("serviceSelected").value;
 
-        serviceChosen = value !== "";
+    const date =
+    document.getElementById("dateSelected").value;
 
-        updateButton();
-    }
+    const time =
+    document.getElementById("timeSelected").value;
 
-    // date
-    dateInput.addEventListener("change", function(){
+    const btn =
+    document.getElementById("submitBtn");
 
-        dateChosen = this.value !== "";
+    if(service !== "" && date !== "" && time !== ""){
 
-        updateButton();
+        btn.disabled = false;
+        btn.style.opacity = "1";
+        btn.style.cursor = "pointer";
 
-    });
+    } else {
 
-    // heure
-    timeInput.addEventListener("change", function(){
-
-        timeChosen = this.value !== "";
-
-        updateButton();
-
-    });
-
-    // activation bouton
-    function updateButton(){
-
-        if(serviceChosen && dateChosen && timeChosen){
-
-            btn.disabled = false;
-            btn.style.opacity = "1";
-            btn.style.cursor = "pointer";
-
-        } else {
-
-            btn.disabled = true;
-            btn.style.opacity = "0.5";
-            btn.style.cursor = "not-allowed";
-
-        }
+        btn.disabled = true;
+        btn.style.opacity = "0.5";
+        btn.style.cursor = "not-allowed";
 
     }
 
-});
+}
+
+// Vérification automatique
+document.addEventListener("input", checkForm);
+
+// bouton désactivé au départ
+window.onload = () => {
+
+    document.getElementById("submitBtn").disabled = true;
+
+};
 
 </script>
 
@@ -397,12 +382,12 @@ document.addEventListener("DOMContentLoaded", () => {
     required>
 
     <!-- SERVICE (rempli automatiquement) -->
-     
+
     <!-- DATE -->
-    <input type="date" name="date" id="dateSelected" required>
+    <input type="date" name="date" id="dateSelected" required onchange="checkForm()">
 
     <!-- HEURE -->
-    <input type="time" name="heure" id="timeSelected" required>
+    <input type="time" name="heure" id="timeSelected" required onchange="checkForm()">
 
     <textarea name="message" rows="5" placeholder="Votre message..." required></textarea>
 
