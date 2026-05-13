@@ -177,39 +177,68 @@ footer {
 
 <script>
 
-let serviceChosen = false;
-let dateChosen = false;
-let timeChosen = false;
+document.addEventListener("DOMContentLoaded", () => {
 
-function selectService(value) {
-    document.getElementById("serviceSelected").value = value;
-    serviceChosen = true;
-    updateButton();
-}
+    let serviceChosen = false;
+    let dateChosen = false;
+    let timeChosen = false;
 
-document.getElementById("dateSelected")?.addEventListener("change", function() {
-    dateChosen = this.value !== "";
-    updateButton();
-});
-
-document.getElementById("timeSelected")?.addEventListener("change", function() {
-    timeChosen = this.value !== "";
-    updateButton();
-});
-
-function updateButton() {
     const btn = document.getElementById("submitBtn");
+    const serviceInput = document.getElementById("serviceSelected");
+    const dateInput = document.getElementById("dateSelected");
+    const timeInput = document.getElementById("timeSelected");
 
-    if (serviceChosen && dateChosen && timeChosen) {
-        btn.disabled = false;
-        btn.style.opacity = "1";
-        btn.style.cursor = "pointer";
-    } else {
-        btn.disabled = true;
-        btn.style.opacity = "0.5";
-        btn.style.cursor = "not-allowed";
+    // bouton désactivé au départ
+    btn.disabled = true;
+
+    // fonction globale
+    window.selectService = function(value){
+
+        serviceInput.value = value;
+
+        serviceChosen = value !== "";
+
+        updateButton();
     }
-}
+
+    // date
+    dateInput.addEventListener("change", function(){
+
+        dateChosen = this.value !== "";
+
+        updateButton();
+
+    });
+
+    // heure
+    timeInput.addEventListener("change", function(){
+
+        timeChosen = this.value !== "";
+
+        updateButton();
+
+    });
+
+    // activation bouton
+    function updateButton(){
+
+        if(serviceChosen && dateChosen && timeChosen){
+
+            btn.disabled = false;
+            btn.style.opacity = "1";
+            btn.style.cursor = "pointer";
+
+        } else {
+
+            btn.disabled = true;
+            btn.style.opacity = "0.5";
+            btn.style.cursor = "not-allowed";
+
+        }
+
+    }
+
+});
 
 </script>
 
@@ -368,8 +397,7 @@ function updateButton() {
     required>
 
     <!-- SERVICE (rempli automatiquement) -->
-    <input type="hidden" name="service" id="serviceSelected">
-
+     
     <!-- DATE -->
     <input type="date" name="date" id="dateSelected" required>
 
