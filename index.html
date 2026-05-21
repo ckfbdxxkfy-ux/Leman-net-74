@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Leman Net  - Entreprise de ménage</title>
+<title>Leman Net - Entreprise de ménage</title>
 
 <style>
 * {
@@ -12,20 +13,61 @@
     box-sizing:border-box;
     font-family: Arial, sans-serif;
 }
-html{
-   scroll-behavior:smooth;
+
+html {
+    scroll-behavior:smooth;
 }
+
 body {
     background:#f4f4f4;
     color:#fff;
 }
 
+/* ===== HEADER ===== */
 header {
     background:linear-gradient(135deg,#0b1f4d,#102b70);
-    padding:80px 20px;
+    padding:50px 20px;
     text-align:center;
 }
 
+/* ===== LOGO ===== */
+.logo-container {
+    width:280px;
+    margin:0 auto 20px auto;
+}
+
+.logo-container svg {
+    width:100%;
+    height:auto;
+}
+
+.circle {
+    fill:white;
+    stroke:#f28c28;
+    stroke-width:6;
+}
+
+.title {
+    fill:#f2933a;
+    font-size:54px;
+    font-weight:bold;
+}
+
+.subtitle {
+    fill:#1f57b3;
+    font-size:35px;
+    font-weight:bold;
+}
+
+.lake {
+    fill:#1f57b3;
+}
+
+.sparkle {
+    fill:white;
+}
+
+/* ===== HERO TEXT ===== */
 header h1 {
     font-size:50px;
     margin-bottom:15px;
@@ -33,9 +75,10 @@ header h1 {
 
 header p {
     font-size:20px;
-    color:#ff9d42;
+    color:#f8f5f3;
 }
 
+/* ===== HERO ===== */
 .hero {
     background:url('https://images.unsplash.com/photo-1581578731548-c64695cc6952');
     background-size:cover;
@@ -62,15 +105,7 @@ header p {
     max-width:700px;
 }
 
-.hero h2 {
-    font-size:50px;
-    margin-bottom:20px;
-}
-
-.hero p {
-    font-size:22px;
-}
-
+/* ===== SECTIONS ===== */
 .section {
     padding:60px 10%;
     background:#0b1f4d;
@@ -78,14 +113,15 @@ header p {
 
 .section h2 {
     text-align:center;
-    margin-bottom:40px;
-    font-size:40px;
-    color:#ff9d42;
+    margin-bottom:30px;
+    font-size:30px;
+    color:#ec8f32;
 }
 
+/* ===== SERVICES ===== */
 .services {
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
     gap:25px;
 }
 
@@ -95,19 +131,10 @@ header p {
     border-radius:15px;
     text-align:center;
     transition:0.3s;
-    overflow:hidden;
 }
 
 .card:hover {
     transform:translateY(-10px);
-}
-
-.card img {
-    width:100%;
-    height:220px;
-    object-fit:cover;
-    border-radius:10px;
-    margin-bottom:15px;
 }
 
 .card h3 {
@@ -115,18 +142,31 @@ header p {
     color:#ff9d42;
 }
 
+/* SELECT */
+.service-select {
+    width:100%;
+    margin-top:15px;
+    padding:14px;
+    border:none;
+    border-radius:10px;
+    font-size:16px;
+    background:white;
+    color:#0b1f3a;
+}
+
+/* ===== CONTACT ===== */
 .contact {
     background:#08152f;
 }
 
 form {
-    max-width:500px;
+    max-width:700px;
     margin:auto;
     display:flex;
     flex-direction:column;
 }
 
-input, textarea, select {
+input, textarea {
     margin:10px 0;
     padding:15px;
     border:none;
@@ -149,6 +189,7 @@ button:hover {
     transform:scale(1.03);
 }
 
+/* INFO */
 .info {
     text-align:center;
     margin-top:30px;
@@ -160,217 +201,196 @@ footer {
     background:#050d1f;
     text-align:center;
     padding:25px;
-    color:#aaa;
+    color:#b0afaf;
 }
 
+/* MOBILE */
 @media(max-width:768px){
     .hero h2 {
         font-size:35px;
     }
-
-    .hero p {
-        font-size:18px;
-    }
 }
 </style>
+
 </head>
 
 <body>
 
+<!-- ===== HEADER ===== -->
 <header>
-    <h1>Leman Net </h1>
-    <p>Entreprise de nettoyage professionnel & particulier</p> <br> La propreté est notre engagement.
+
+<div class="logo-container">
+
+<svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+
+  <circle class="circle" cx="250" cy="250" r="235"/>
+
+  <text x="70" y="170" class="title" transform="rotate(-12 70 170)">
+    Léman
+  </text>
+
+  <text x="325" y="165" class="title" transform="rotate(15 325 165)">
+    Net
+  </text>
+
+  <path class="lake"
+        d="M45 275
+           Q90 220 140 205
+           Q180 175 225 190
+           Q255 160 295 180
+           Q345 170 390 205
+           Q430 220 455 260
+           L455 315
+           Q405 300 360 295
+           Q315 285 270 290
+           Q230 295 190 290
+           Q145 285 105 295
+           Q70 305 45 325
+           Z"/>
+
+  <g class="sparkle">
+    <polygon points="250,215 255,228 268,233 255,238 250,251 245,238 232,233 245,228"/>
+    <polygon points="310,195 314,205 324,209 314,213 310,223 306,213 296,209 306,205"/>
+    <polygon points="360,240 364,250 374,254 364,258 360,268 356,258 346,254 356,250"/>
+  </g>
+
+  <text x="210" y="340" class="subtitle" transform="rotate(10 210 340)">
+    Conciergerie
+  </text>
+
+</svg>
+
+</div>
+
+<p>Entreprise de nettoyage professionnel & particulier</p>
+<p>La propreté est notre engagement.</p>
+
 </header>
 
-<section id="services" class="section fade">
+<!-- ===== SERVICES ===== -->
+<section id="services" class="section">
 
-    <h2>Nos Services</h2>
+<h2>Nos Services</h2>
 
-    <div class="services">
+<div class="services">
 
-        <!-- NETTOYAGE PROFESSIONNEL -->
-        <div class="card">
+<div class="card">
+<h3>Nettoyage professionnel</h3>
+<select name="nettoyage_professionnel" class="service-select">
+<option value="">Choisir une formule</option>
+<option value="2 heures">2 heures</option>
+<option value="4 heures">4 heures</option>
+<option value="8 heures">8 heures</option>
+</select>
+</div>
 
-            <h3> Nettoyage professionnel</h3>
+<div class="card">
+<h3>Nettoyage particulier</h3>
+<select name="nettoyage_particulier" class="service-select">
+<option value="">Choisir une formule</option>
+<option value="1,5 pièces">1,5 pièces</option>
+<option value="2 pièces">2 pièces</option>
+<option value="2,5 pièces">2,5 pièces</option>
+<option value="3 pièces">3 pièces</option>
+<option value="3,5 pièces">3,5 pièces</option>
+<option value="4 pièces">4 pièces</option>
+<option value="4,5 pièces">4,5 pièces</option>
+<option value="5 pièces">5 pièces</option>
+</select>
+</div>
 
-            <select onchange="document.getElementById('serviceSelected').value=this.value">
-                <option value="">Choisir une formule</option>
-                <option value="Nettoyage professionnel - 2h">2 heures (Petit bureau)</option>
-                <option value="Nettoyage professionnel - 3h">3 heures (Petite équipe)</option>
-                <option value="Nettoyage professionnel - 4h">4 heures (Bureau standard)</option>
-                <option value="Nettoyage professionnel - 6h">6 heures (Grand espace)</option>
-                <option value="Nettoyage professionnel - 8h">8 heures (Journée complète)</option>
-            </select>
+<div class="card">
+<h3>Vitrerie</h3>
+<select name="vitrerie" class="service-select">
+<option value="">Choisir une formule</option>
+<option value="2 heures">2 heures</option>
+<option value="3 heures">3 heures</option>
+<option value="4 heures">4 heures</option>
+<option value="5 heures">5 heures</option>
+</select>
+</div>
 
-        </div>
+<div class="card">
+<h3>Débarras</h3>
+<select name="debarras" class="service-select">
+<option value="">Choisir une formule</option>
+<option value="Demi-journée">4 heures (Demi-journée)</option>
+<option value="Journée complète">8 heures (Journée complète)</option>
+</select>
+</div>
 
-        <!-- NETTOYAGE PARTICULIER -->
-        <div class="card">
+<div class="card">
+<h3>Conciergerie</h3>
+<select name="conciergerie" class="service-select">
+<option value="">Choisir une prestation</option>
+<option value="Airbnb">Entretien Airbnb</option>
+<option value="Gestion des clés">Gestion des clés</option>
+<option value="Ménage régulier">Ménage régulier</option>
+<option value="Accueil voyageurs">Accueil voyageurs</option>
+</select>
+</div>
 
-            <h3> Nettoyage particulier</h3>
-
-            <select onchange="document.getElementById('serviceSelected').value=this.value">
-                <option value="">Choisir une formule</option>
-                <option value="Nettoyage particulier - 1,5 pièces">1,5 pièces</option>
-                <option value="Nettoyage particulier - 2 pièces">2 pièces</option>
-                <option value="Nettoyage particulier - 2,5 pièces">2,5 pièces</option>
-                <option value="Nettoyage particulier - 3 pièces">3 pièces</option>
-                <option value="Nettoyage particulier - 3,5 pièces">3,5 pièces</option>
-                <option value="Nettoyage particulier - 4 pièces">4 pièces</option>
-                <option value="Nettoyage particulier - 4,5 pièces">4,5 pièces</option>
-                <option value="Nettoyage particulier - 5 pièces">5 pièces</option>
-            </select>
-
-        </div>
-
-        <!-- VITRERIE -->
-        <div class="card">
-
-            <h3> Vitrerie</h3>
-
-            <select onchange="document.getElementById('serviceSelected').value=this.value">
-                <option value="">Choisir une formule</option>
-                <option value="Vitrerie - 2h">2 heures (Petit appartement)</option>
-                <option value="Vitrerie - 3h">3 heures (Domicile moyen)</option>
-                <option value="Vitrerie - 4h">4 heures (Grande maison)</option>
-                <option value="Vitrerie - 5h">5 heures (Villa)</option>
-            </select>
-
-        </div>
-
-        <!-- DÉBARRAS -->
-        <div class="card">
-
-            <h3>🚛 Débarras</h3>
-
-            <select onchange="document.getElementById('serviceSelected').value=this.value">
-                <option value="">Choisir une formule</option>
-                <option value="Débarras - 4h">4 heures (Demi-journée)</option>
-                <option value="Débarras - 8h">8 heures (Journée complète)</option>
-            </select>
-
-        </div>
-
-        <!-- CONCIERGERIE -->
-        <div class="card">
-
-            <h3>🛎️ Conciergerie</h3>
-
-            <select onchange="document.getElementById('serviceSelected').value=this.value">
-                <option value="">Choisir une prestation</option>
-                <option value="Conciergerie - Airbnb">Entretien Airbnb</option>
-                <option value="Conciergerie - Gestion clés">Gestion des clés</option>
-                <option value="Conciergerie - Ménage régulier">Ménage régulier</option>
-                <option value="Conciergerie - Accueil">Accueil voyageurs</option>
-            </select>
-
-        </div>
-
-    </div>
-
+</div>
 </section>
 
-<!-- STYLE -->
-
-<style>
-
-#successMessage {
-    position: fixed;
-    top: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: green;
-    color: white;
-    padding: 15px 25px;
-    border-radius: 10px;
-    display: none;
-    z-index: 9999;
-}
-
-#contact button:disabled {
-    background:#999 !important;
-    transform:none !important;
-    box-shadow:none !important;
-    cursor:not-allowed;
-    opacity:0.6;
-}
-
-.service-select{
-    width:100%;
-    margin-top:20px;
-    padding:14px;
-    border:none;
-    border-radius:10px;
-    font-size:16px;
-    background:white;
-    color:#0b1f3a;
-    cursor:pointer;
-}
-
-.service-select:focus{
-    outline:none;
-}
-
-</style>
-
+<!-- ===== CONTACT ===== -->
 <section id="contact" class="section contact">
-    <h2>Contact</h2>
 
-    <form action="https://formspree.io/f/xredpeqq" method="POST">
-        <input type="hidden" name="service" id="serviceSelected">
+<h2>Contact</h2>
 
-    <input type="text"
-    name="nom"
-    placeholder="Votre nom"
-    required>
+<form id="contactForm" action="https://formspree.io/f/xzdweapd" method="POST">
 
-    <input type="email"
-    name="email"
-    placeholder="Votre email"
-    required>
+<input type="hidden" name="_subject" value="Nouveau devis Leman Net">
+<input type="hidden" name="_captcha" value="false">
 
-    <!-- SERVICE (rempli automatiquement) -->
+<input type="text" name="nom" placeholder="Votre nom" required>
+<input type="email" name="email" placeholder="Votre email" required>
+<input type="date" name="date" required>
+<input type="time" name="heure" required>
 
-    <!-- DATE -->
-    <input type="date" name="date" id="dateSelected" required onchange="checkForm()">
+<textarea name="message" rows="5" placeholder="Votre message..." required></textarea>
 
-    <!-- HEURE -->
-    <input type="time" name="heure" id="timeSelected" required onchange="checkForm()">
+<button type="submit">Demander un devis</button>
 
-    <textarea name="message" rows="5" placeholder="Votre message..." required></textarea>
-
-
-     <input type="hidden" name="_captcha" value="false">
-
-            <button type="submit" class="btn">Demander un devis</button>
-
-            <p class="success" id="successMessage">✔ Message envoyé !</p>
+ <!-- MESSAGE SUCCÈS -->
+        <p class="success" id="successMessage" style="display:none;">
+            ✔ Message envoyé avec succès !
+        </p>
 
 </form>
 
-<script>
-// SCROLL ANIMATION
-const faders = document.querySelectorAll('.fade');
+<div class="info">
+📞 06 03 15 26 13<br>
+📧 leman.net74@gmail.com<br>
+🌐 https://leman-net74.fr<br>
+📍 Disponible partout en Haute-Savoie
+</div>
 
-window.addEventListener('scroll', () => {
-    faders.forEach(el => {
-        const rect = el.getBoundingClientRect();
-        if(rect.top < window.innerHeight - 100){
-            el.classList.add('visible');
-        }
-    });
+</section>
+
+<!-- ===== SCRIPT ===== -->
+<script>
+    
+const form = document.getElementById("contactForm");
+const success = document.getElementById("successMessage");
+
+form.addEventListener("submit", function (event) {
+
+    const recap =
+        "Nettoyage pro: " + document.querySelector('[name="nettoyage_professionnel"]').value + "\n" +
+        "Particulier: " + document.querySelector('[name="nettoyage_particulier"]').value + "\n" +
+        "Vitrerie: " + document.querySelector('[name="vitrerie"]').value + "\n" +
+        "Débarras: " + document.querySelector('[name="debarras"]').value + "\n" +
+        "Conciergerie: " + document.querySelector('[name="conciergerie"]').value;
+
+    document.querySelector('[name="message"]').value += "\n\n--- DEVIS ---\n" + recap;
+
+    setTimeout(() => {
+        success.style.display = "block";
+    }, 800);
 });
 
 </script>
 
-    <div class="info">
-        📞 06 03 15 26 13<br>
-        📧 leman.net74@gmail.com<br>
-        🌐 <a href="https://leman-net74.fr" target="_blank" style="color:#ff9d42; text-decoration:none;">https://leman-net74.fr</a><br>
-        📍 Disponible partout en Haute-Savoie
-    </div>
-</section>
-
-<footer>
-    © 2026 Leman Net 74 - Tous droits réservés
-</footer>
+</body>
+</html>
